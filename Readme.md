@@ -26,7 +26,8 @@ go get google.golang.org/grpc@v1.28.1
 
 ---
 
-#### Пример команды
+### Пример команд
+**Генерация go исходников из .proto**
 ```
 protoc -I /path/to/proto-files/dir/ /path/to/file.proto --go_out=plugins=grpc:/path/to/output/dir/
 ```
