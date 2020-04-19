@@ -31,3 +31,13 @@ go get google.golang.org/grpc@v1.28.1
 ```
 protoc -I /path/to/proto-files/dir/ /path/to/file.proto --go_out=plugins=grpc:/path/to/output/dir/
 ```
+
+**Запуск сервера**
+```go
+go run cmd/server/main.go
+```
+
+**Запуск клиента**
+```go
+go run cmd/client/main.go
+```
