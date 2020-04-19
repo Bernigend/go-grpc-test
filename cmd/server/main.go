@@ -29,6 +29,8 @@ func (s *server) Search(ctx context.Context, request *schedule_service.SearchReq
 		Symbolic: "Test",
 	})
 
+	log.Printf("Incoming request: %v", request)
+
 	// возвращаем ответ
 	return &schedule_service.SearchResponse{Groups: groups}, nil
 }
