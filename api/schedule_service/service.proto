@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package schedule_service;
+option go_package = ".;schedule_service";
+
+import "models.proto";
+
+service ScheduleService {
+    rpc Search(SearchRequest) returns (SearchResponse) {}
+}
+
+message SearchRequest {
+    string name = 1;
+}
+
+message SearchResponse {
+    repeated GroupItem groups = 1;
+}
