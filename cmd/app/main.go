@@ -2,7 +2,16 @@ package main
 
 import (
 	"context"
+	"flag"
+	"fmt"
+	"google.golang.org/grpc"
+	"log"
+	"net"
 	"schedule-service/internal/pkg/api/schedule_service"
+)
+
+const (
+	ServerPort = 3456
 )
 
 type server struct {
@@ -25,5 +34,22 @@ func (s *server) Search(ctx context.Context, request *schedule_service.SearchReq
 }
 
 func main() {
+	flag.Parse()
 
+	// начинаем прослушивать порт
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", ServerPort))
+	if err != nil {
+		log.Fatalf("Failed to listen: %v", err)
+	}
+
+	// create instance of grpc server
+	grpcServer := grpc.NewServer()
+	// register our service ]
+	schedule_service.RegisterScheduleServiceServer(grpcServer, &server{})
+
+	// запускаем обработку входящих запросов
+	err = grpcServer.Serve(lis)
+	if err != nil {
+		log.Fatalf("Failed to serve: %v", err)
+	}
 }
