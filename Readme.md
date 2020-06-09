@@ -20,7 +20,7 @@ export PATH="$PATH:$GOPATH/bin"
 ```
 ## Установка
 
-export GO111MODULE=on # Enable module-aware mode
+export GO111MODULE=on # win: go env -w GO111MODULE=on
 go get google.golang.org/grpc@v1.28.1
 ```
 
